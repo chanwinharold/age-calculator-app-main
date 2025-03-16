@@ -1,13 +1,14 @@
 
-function verifyDay(day) {
-    return (parseInt(day) > 0) && (parseInt(day) <= 31)
+function verifyDay(day, month, year) {
+    let maxDays = new Date(year, month, 0).getDate()
+    return (day > 0) && (day <= maxDays)
 }
 function verifyMonth(month) {
-    return (parseInt(month) > 0) && (parseInt(month) <= 12)
+    return (month > 0) && (month < 12)
 }
 function verifyYear(year) {
     let currentYear = new Date().getFullYear()
-    return (parseInt(year) >= 0) && (currentYear >= parseInt(year))
+    return (year >= 0) && (year <= currentYear)
 }
 
 
@@ -28,17 +29,22 @@ function errorYear() {
 }
 
 
-// TODO --> Corriger la logique de calcul du nombre de mois et de jours
-function calcYear(year) {
+// TODO --> Rendre plus robuste la logique de calcul
+function calcYear(month, year) {
     let currentYear = new Date().getFullYear()
-    return (currentYear - parseInt(year))
+    let currentMonth = new Date().getMonth() + 1
+    if (currentMonth >= month) {
+        return (currentYear - parseInt(year))
+    } else return (currentYear - parseInt(year) - 1)
 }
 function calcMonth(month) {
-    let currentMonth = new Date().getMonth()
-    return Math.abs(currentMonth - parseInt(month))
+    let currentMonth = new Date().getMonth() + 1
+    if (currentMonth >= month) {
+        return parseInt(month) - currentMonth
+    } else return parseInt(month)
 }
 function calcDate(day) {
-    let currentDay = new Date().getDay()
+    let currentDay = new Date().getDate()
     return Math.abs(currentDay - parseInt(day))
 }
 
