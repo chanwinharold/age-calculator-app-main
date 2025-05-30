@@ -3,45 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <meta name="description" content="Age calculator app">
 
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-
-    <script src="src/functions.js" defer></script>
+    <link href="./src/output.css" rel="stylesheet">
     <script src="src/main.js" defer></script>
 
     <title>Frontend Mentor | Age calculator app</title>
-
-    <link href="./src/output.css" rel="stylesheet">
-
 </head>
 <body>
 
-<form method="get" class="min-w-xs flex flex-col gap-10 max-sm:w-[96vw] sm:w-sm md:w-md lg:w-xl my-10 p-10 bg-white rounded-lg max-sm:rounded-br-[100px] sm:rounded-br-[150px]">
+<form novalidate method="get" class="max-w-lg m-4 flex flex-col gap-10 min-sm:px-8 min-sm:py-12 px-6 py-10 bg-white rounded-lg max-sm:rounded-br-[100px] sm:rounded-br-[150px]">
 
     <fieldset class="flex max-sm:justify-center gap-3 sm:pr-15 md:pr-30">
         <label><span class="labelDay">Day</span>
-            <input name="day" placeholder="DD" required>
+            <input id="day" type="number" name="day" placeholder="DD" min="1" max="31" required>
             <span class="text-customLightRed text-xs"></span>
         </label>
         <label><span class="labelMonth">Month</span>
-            <input name="month" placeholder="MM" required>
+            <input id="month" type="number" name="month" placeholder="MM" min="1" max="12" required>
             <span class="text-customLightRed text-xs"></span>
         </label>
         <label><span class="labelYear">Year</span>
-            <input name="year" placeholder="YYYY" required>
+            <input id="year" type="number" name="year" min="0" placeholder="YYYY" required>
             <span class="text-customLightRed text-xs"></span>
         </label>
     </fieldset>
 
     <div class="flex flex-col border-t pt-10 relative">
-        <button type="submit"><img class="absolute -top-6 right-0 max-sm:right-[40%] w-15 bg-customPurple hover:bg-customOffBlack rounded-full p-3" src="assets/images/icon-arrow.svg" alt="arrow"></button>
+        <button id="submit" type="submit"><img class="absolute -top-6 right-0 max-sm:right-[40%] w-15 bg-customPurple hover:bg-customOffBlack rounded-full p-3" src="assets/images/icon-arrow.svg" alt="arrow"></button>
         <strong><span class="displayYears">- -</span> years</strong>
         <strong><span class="displayMonths">- -</span> months</strong>
         <strong><span class="displayDays">- -</span> days</strong>
     </div>
 </form>
 
-<footer class="attribution">
+<footer class="attribution" hidden>
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">chanwinharold</a>.
 </footer>
